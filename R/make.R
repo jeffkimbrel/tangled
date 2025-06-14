@@ -30,7 +30,6 @@ make_kmers <- function(n) {
 #' This function does not take any inputs. It creates the tangledDB database
 #' that is also included as a dataset in the package.
 #'
-#' @returns
 #' @export
 
 make_tangledDB = function() {

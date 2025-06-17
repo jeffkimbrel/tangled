@@ -2,7 +2,7 @@
 % Please edit documentation in R/get.R
 \name{get_subsequences}
 \alias{get_subsequences}
-\title{Title}
+\title{Get Subsequence}
 \usage{
 get_subsequences(seq, ends = TRUE)
 }
@@ -12,5 +12,5 @@ get_subsequences(seq, ends = TRUE)
 \item{ends}{logical, if TRUE, adds the first and last amino acid with a "X" to the subsequences}
 }
 \description{
-Title
+Get Subsequence
 }

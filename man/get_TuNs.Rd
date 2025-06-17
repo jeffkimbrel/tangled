@@ -4,10 +4,10 @@
 \alias{get_TuNs}
 \title{Title}
 \usage{
-get_TuNs(AA, type = "df")
+get_TuNs(diAA, type = "df")
 }
 \arguments{
-\item{AA}{di-amino acid to search for in tangledDB}
+\item{diAA}{di-amino acid to search for in tangledDB}
 
 \item{type}{type of return value, either "df" for a data frame or "vec" for a vector of unique TuNs}
 }

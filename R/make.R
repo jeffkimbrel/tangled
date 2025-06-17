@@ -32,20 +32,25 @@ make_kmers <- function(n) {
 #'
 #' @export
 
-make_tangledDB = function() {
+make_tangledDB <- function() {
   make_kmers(6) |>
     tibble::enframe(name = NULL, value = "hexamer") |>
     dplyr::rowwise() |>
-    dplyr::mutate(AA = bioseq::seq_translate(bioseq::as_dna(hexamer),
-                                             codon_frame = 1),
-                  tetramer = substr(hexamer,1,4),
-                  pentamer = substr(hexamer,1,5),
-                  AA1 = substr(AA,1,1),
-                  AA2 = substr(AA,2,2),
-                  TuN = bioseq::seq_translate(bioseq::as_dna(hexamer),
-                                              codon_frame = 2),
-                  PuN = bioseq::seq_translate(bioseq::as_dna(hexamer),
-                                              codon_frame = 3)) |>
-    dplyr::ungroup()
+    dplyr::mutate(
+      diAA = bioseq::seq_translate(bioseq::as_dna(hexamer),
+        codon_frame = 1
+      ),
+      tetramer = substr(hexamer, 1, 4),
+      pentamer = substr(hexamer, 1, 5),
+      AA0 = substr(diAA, 1, 1),
+      AA3 = substr(diAA, 2, 2),
+      TOL = bioseq::seq_translate(bioseq::as_dna(hexamer),
+        codon_frame = 2
+      ),
+      POL = bioseq::seq_translate(bioseq::as_dna(hexamer),
+        codon_frame = 3
+      )
+    ) |>
+    dplyr::ungroup() |>
+    dplyr::select(diAA, hexamer, AA0, AA3, TOL, POL)
 }
-

@@ -4,12 +4,12 @@
 \alias{get_PuNs}
 \title{Title}
 \usage{
-get_PuNs(AA, type = "df")
+get_PuNs(diAA, type = "df")
 }
 \arguments{
-\item{AA}{di-amino acid to search for in tangledDB}
-
 \item{type}{type of return value, either "df" for a data frame or "vec" for a vector of unique PuNs}
+
+\item{AA}{di-amino acid to search for in tangledDB}
 }
 \description{
 Title

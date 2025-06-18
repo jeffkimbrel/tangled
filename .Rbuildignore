@@ -1,3 +1,4 @@
 ^tangled\.Rproj$
 ^\.Rproj\.user$
 ^data-raw$
+^README\.Rmd$

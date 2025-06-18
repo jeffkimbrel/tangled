@@ -16,7 +16,7 @@ get_TuNs <- function(diAA, type = "df") {
   }
 
   df <- tangled::tangledDB |>
-    dplyr::filter(diAA == !!diAA) |>
+    dplyr::filter(diAA == bioseq::aa(!!diAA)) |>
     dplyr::mutate(tetramer = substr(hexamer, 2, 5)) |>
     dplyr::select(hexamer, diAA, AA0, AA3, tetramer, TOL) |>
     tidyr::nest(hexamers = c(hexamer, tetramer)) |>
@@ -56,8 +56,8 @@ get_PuNs <- function(diAA, type = "df") {
   }
 
   df <- tangled::tangledDB |>
-    dplyr::filter(diAA == !!diAA) |>
-    dplyr::mutate(pentamer = substr(hexamer, 3, 6)) |>
+    dplyr::filter(diAA == bioseq::aa(!!diAA)) |>
+    dplyr::mutate(pentamer = substr(hexamer, 1, 5)) |>
     dplyr::select(hexamer, diAA, AA0, AA3, pentamer, POL) |>
     tidyr::nest(hexamers = c(hexamer, pentamer)) |>
     dplyr::arrange(POL)
@@ -85,10 +85,10 @@ get_TOLs <- function(A, type = "df") {
   }
 
   df <- tangled::tangledDB |>
-    dplyr::filter(AA0 == A) |>
+    dplyr::filter(AA0 == bioseq::aa(A)) |>
     dplyr::mutate(tetramer = substr(hexamer, 1, 4)) |>
     dplyr::select(A = AA0, TOL, tetramer) |>
-    distinct() |>
+    dplyr::distinct() |>
     tidyr::nest(tetramers = tetramer) |>
     dplyr::arrange(TOL)
 
@@ -114,10 +114,10 @@ get_POLs <- function(A, type = "df") {
   }
 
   df <- tangled::tangledDB |>
-    dplyr::filter(AA0 == A) |>
+    dplyr::filter(AA0 == bioseq::aa(A)) |>
     dplyr::mutate(pentamer = substr(hexamer, 1, 5)) |>
     dplyr::select(A = AA0, POL, pentamer) |>
-    distinct() |>
+    dplyr::distinct() |>
     tidyr::nest(pentamers = pentamer) |>
     dplyr::arrange(POL)
 
